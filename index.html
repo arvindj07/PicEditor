@@ -1,19 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
   <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
-  
+
   <div class="heading">
-    <img src="./images/logo.jpg">
-    <h3>PicEditor</h3>
+    <img class="logo" src="./images/logo.jpg">
+    <h3 class="title">PicEditor</h3>
   </div>
+
+  <div class="open-image">
+    <label class="file-img-label" for="file-input">
+      <i class="far fa-image image-logo"></i>
+    </label>    
+    <input id="file-input" type="file" />  
+    
+    <h4 class="image-title">Open Image</h4>
+  </div>
+  
+  <div class="tool-container">
+
+  </div>
+
   <script src="./script.js"></script>
 
 </body>
+
 </html>

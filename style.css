@@ -3,4 +3,53 @@
 }
 body{
   margin: 0;
+  background-color: #0D1117;
+}
+
+/* heading  */
+.heading{
+  display: flex;
+  height: 2rem;
+  border-radius: 13%;
+  box-shadow: -8px 10px 7px -7px #43444c;
+  /* border: 1px solid white; */
+}
+.logo{
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+}
+.title{
+  color: #daeeff;  
+  position: relative;
+  left: 6px;
+  top: -16px;
+}
+
+/* Open-Image */
+.open-image{  
+  display: flex;
+  height: 3rem;
+  /* border: 1px solid white; */
+}
+.image-logo{
+  width: 3rem;
+  height: 3rem;
+  font-size: 2rem;
+  color: #8491a9;;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* hide-> input-file of image */
+#file-input{
+  display: none;
+}
+
+.image-title{
+  color: #426f94;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
