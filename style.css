@@ -6,7 +6,7 @@ body{
   background-color: #0D1117;
 }
 
-/* heading  */
+/* **************************heading  */
 .heading{
   display: flex;
   height: 2rem;
@@ -26,10 +26,11 @@ body{
   top: -16px;
 }
 
-/* Open-Image */
+/*********************** Open-Image */
 .open-image{  
   display: flex;
   height: 3rem;
+  display: none;
   /* border: 1px solid white; */
 }
 .image-logo{
@@ -53,3 +54,98 @@ body{
   justify-content: center;
   align-items: center;
 }
+
+/****************** Tool-Container  */
+.tool-container{
+  display: flex;
+  height: 6vh;
+  justify-content: space-evenly;
+  align-items: center;
+  /* border: 1px solid white; */
+}
+.tool{
+  width: 7%;
+  height: 90%;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid white; */
+}
+.tool-active{
+  background-color: #5d5d5d;
+}
+.tool:hover{
+  cursor: pointer;
+}
+.tool>i{
+  font-size: 1.7rem;
+  color: #f9efef;
+}
+
+/* Filter-Container */
+.filter-container{
+  display: flex;
+  height: 14vh;
+  justify-content: space-evenly;
+  align-items: center;
+  overflow: auto;
+  background-color: #161B22;
+  border-radius: 3%;
+  /* border: 1px solid white; */
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+.filter-container::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.filter-container {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+.filters{
+  min-width: 15%;
+  height: 90%;
+  border-radius: 9%;
+  background-image: url("https://wallpaperaccess.com/full/2027665.jpg"); 
+  background-size: cover;
+  background-blend-mode: color-burn;
+  /* border: 1px solid white; */
+}
+.filters:hover{
+  cursor: pointer;
+}
+#filter1{
+  filter: none;
+}
+#filter2{
+  filter: opacity(50%);
+}
+#filter3{
+  filter: sepia(100%);
+}
+#filter4{
+  filter: grayscale(100%);
+}
+#filter5{
+  filter: hue-rotate(180deg); 
+}
+#filter6{
+  filter: contrast(180%);
+}
+
+
+@media screen and (max-width: 1000px) {
+  .filters{
+    min-width: 155px;
+    margin-left: 10px;
+  }
+}
+
+@media screen and (max-width: 655px) {
+  body{
+    width: 655px;
+    overflow: hidden;
+  }
+}
+
