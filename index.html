@@ -6,26 +6,32 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <!-- font-awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <!-- material-icon -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
 
+  <!-- heading  -->
   <div class="heading">
     <img class="logo" src="./images/logo.jpg">
     <h3 class="title">PicEditor</h3>
   </div>
 
+  <!-- Open-Image  -->
   <div class="open-image">
     <label class="file-img-label" for="file-input">
       <i class="far fa-image image-logo"></i>
-    </label>    
-    <input id="file-input" type="file" />  
-    
+    </label>
+    <input id="file-input" type="file" />
+
     <h4 class="image-title">Open Image</h4>
   </div>
-  
+
+  <!-- All Editing Tool-Container -->
   <div class="tool-container">
     <div class="tool" id="filter">
       <i class="far fa-images"></i>
@@ -36,17 +42,57 @@
     <div class="tool" id="mark">
       <i class="fas fa-pencil-alt"></i>
     </div>
+    <div class="tool" id="download">
+      <i class="fas fa-download"></i>
+    </div>
+    <div class="tool" id="back">
+      <span class="material-icons">keyboard_return</span>
+    </div>
   </div>
 
-  <div class="filter-container">
-    <div class="filters" id="filter1"></div>
-    <div class="filters" id="filter2"></div>
-    <div class="filters" id="filter3"></div>
-    <div class="filters" id="filter4"></div>
-    <div class="filters" id="filter5"></div>
-    <div class="filters" id="filter6"></div>
+  <!-- Filter-Tool  -->
+  <div class="filter-options">
+    <div class="cancel"><i class="far fa-window-close"></i></div>
+    <div class="filter-container">
+      <div class="filters" id="filter1"></div>
+      <div class="filters" id="filter2"></div>
+      <div class="filters" id="filter3"></div>
+      <div class="filters" id="filter4"></div>
+      <div class="filters" id="filter5"></div>
+      <div class="filters" id="filter6"></div>
+    </div>
+    <div class="apply"><i class="fas fa-check"></i></div>
   </div>
-  <scri6t src="./script.js"></script>
-  </body>
+
+  <!-- Adjust-Tool  -->
+  <div class="adjust-options">
+    <div class="cancel"><i class="far fa-window-close"></i></div>
+
+    <div class="adjust-container">
+      <div class="adjust-tool" id="crop"><i class="fas fa-crop-alt"></i></div>
+      <div class="adjust-tool" id="rotate"><span class="material-icons">crop_rotate</span></div>
+      <div class="adjust-tool" id="exposure"><span class="material-icons">exposure</span></div>
+      <div class="adjust-tool" id="contrast"><i class="fas fa-adjust"></i></div>
+    </div>
+
+    <div class="apply"><i class="fas fa-check"></i></div>
+  </div>
+
+  <!-- Pencil-Tool  -->
+  <div class="pencil-options">
+    <input type="range" id="eraser-line-width" class="line-width" min="5" max="15" value="5">
+    <div class="color-container">
+      <div class="color red" id="red" colorValue="red"></div>
+      <div class="color yellow" id="yellow" colorValue="yellow"></div>
+      <div class="color green" id="green" colorValue="green"></div>
+      <div class="color purple" id="purple" colorValue="purple"></div>
+    </div>
+  </div>
+
+
+
+  <script src="./script.js">
+  </script>
+</body>
 
 </html>
