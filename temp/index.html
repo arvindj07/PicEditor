@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    img {
+      filter: sepia(100%);
+    }
+    </style>
+</head>
+
+<body>
+
+
+
+
+
+  <input id="file-input" type="file" />
+
+
+  <!-- Filter Options  -->
+
+  <!-- <div class="filter-container">
+    <img src="https://wallpaperaccess.com/full/2027665.jpg" class="filters" id="filter5">
+    <img src="https://wallpaperaccess.com/full/2027665.jpg" class="filters" id="filter2">
+  </div> -->
+
+  <img id="myImg" src="https://wallpaperaccess.com/full/2027665.jpg" alt="Pineapple" width="300" height="300">
+  <img id="myImg2" src="https://wallpaperaccess.com/full/2027665.jpg" alt="Pineapple" width="300" height="300">
+
+  <button>Try it</button><br><br>
+
+  <img class="img-container" id="img-container">
+
+  <script src="./script.js">
+  </script>
+
+  <!-- <script>
+
+    let img_container = document.querySelector("#img-container");
+
+    let open_image_input = document.querySelector("#file-input"); // input-file
+
+
+
+    open_image_input.addEventListener("change", function (e) {
+      let file = open_image_input.files;
+      var image = new Image;
+      image.src = URL.createObjectURL(file[0]);
+      img_container.src = image.src;
+      img_container.style.filter = "grayscale(100%)";
+
+    })
+  </script> -->
+</body>
+
+</html>

@@ -31,8 +31,11 @@ body{
 .open-image{  
   display: flex;
   height: 3rem;
-  display: none;
+  /* display: none; */
   /* border: 1px solid white; */
+}
+.open-image>label{  
+  cursor: pointer;
 }
 .image-logo{
   width: 3rem;
@@ -62,6 +65,7 @@ body{
   height: 6vh;
   justify-content: space-evenly;
   align-items: center;
+  display: none;
   /* border: 1px solid white; */
 }
 .tool{
@@ -119,7 +123,6 @@ body{
   border-radius: 9%;
   background-image: url("https://wallpaperaccess.com/full/2027665.jpg"); 
   background-size: cover;
-  background-blend-mode: color-burn;
   /* border: 1px solid white; */
 }
 .filters:hover{
@@ -153,7 +156,7 @@ body{
   background-color: #161B22;
   border-radius: 5%;
   align-items: center;
-  /* display: none; */
+  display: none;
   /* border: 1px solid white; */
 }
 
@@ -254,6 +257,26 @@ body{
 }
 .color-active{
   opacity: 1;
+}
+
+/**** Canvas-Board  */
+.canvas-style{
+  position: fixed;
+  bottom: 2rem;
+  left: calc(100vw/3);
+  width: 655px;
+  height: 400px;
+  display: none;
+  /* border: 1px solid white; */
+}
+.img-container{
+  z-index: -2;
+  position: fixed;
+  bottom: 2rem;
+  left: calc(100vw/5);
+  width: 655px;
+  height: 400px;
+  display: none;
 }
 
 

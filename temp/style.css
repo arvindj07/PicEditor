@@ -1,0 +1,42 @@
+*{
+  box-sizing: border-box;;
+}
+body{
+  margin: 0;
+  background-color: #0D1117;
+}
+
+
+
+/************************** Filter-Container */
+
+.filter-container{
+  display: flex;
+  width: 100vw;
+  height: 20vh;
+  justify-content: space-evenly;
+  align-items: center;
+  overflow-x: auto;
+}
+
+.filters{
+  min-width: 15%;
+  height: 90%;
+  border-radius: 9%;  
+  filter: hue-rotate(180deg); 
+  /* border: 1px solid white; */
+}
+
+
+
+
+.img-container{
+  z-index: 10;
+  position: fixed;
+  bottom: 2rem;
+  left: calc(100vw/5);
+  width: 655px;
+  height: 400px;
+  /* display: none; */
+}
+

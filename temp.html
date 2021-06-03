@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    img {
+      position: fixed;
+      right: 2rem;
+      width: 20rem;
+      height: 20rem;
+    }
+
+    input {
+      position: fixed;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <input id="file-input" type="file" />
+  <img id="images">
+
+  <script>
+
+
+    let open_image = document.querySelector("#file-input");
+    let img = document.querySelector("#images");
+
+
+    open_image.addEventListener("change", function (e) {
+      let file = open_image.files; // img-file
+
+
+      
+
+      var image = new Image;
+      image.src = URL.createObjectURL(file[0]);
+      img.src=image.src;
+      img.style.filter="grayscale(100%)";
+
+
+    })
+
+  </script>
+
+</body>
+
+</html>
