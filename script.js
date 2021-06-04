@@ -1,6 +1,7 @@
 // Canvas
 let canvas = document.querySelector("canvas");
 let tool = canvas.getContext("2d");
+tool.strokeStyle="red";//default
 // Image-Container-> View of Canvas
 let img_container = document.querySelector("#img-container");
 // Open-Image
@@ -9,16 +10,27 @@ let open_image = document.querySelector(".open-image");
 // All-Tools
 let tool_container = document.querySelector(".tool-container");
 let allTool = document.querySelectorAll(".tool");
-let filterTool = document.querySelector("#filterTool");
-let back = document.querySelector("#back");
-let download = document.querySelector("#download");
 let toolNo = 0;
+// Back
+let back = document.querySelector("#back");
+// Download
+let download = document.querySelector("#download");
 // Filter-Options
+let filterTool = document.querySelector("#filterTool");
 let filterOptions = document.querySelector(".filter-options");
 let allFilters = document.querySelectorAll(".filters");
 let currFilter = "";
+// Pencil
+let pencil = document.querySelector("#pencil");
+let pencil_options = document.querySelector(".pencil-options");
+let mouseDown;
+let lineWidth = document.querySelector(".line-width")
+let allColorEle = document.querySelectorAll(".color");
+let currColor = "";
+// 
 // Apply and Cancel
 let apply = document.querySelector(".apply");
+let cancel = document.querySelector(".cancel");
 
 
 
@@ -50,26 +62,58 @@ open_image_input.addEventListener("change", function (e) {
 
 //********************************All Tools */
 
-// Filter-Tool
+//*** Filter-Tool
 filterTool.addEventListener("click", function (e) {
   toolNo = 1;
+  onlyViewToolContainer();
   displayFlex(filterOptions);
 })
 
-// Handle Back-Btn
-back.addEventListener("click", function (e) {
-  toolNo = 5;
-  removeAllActive(allTool);
-  setActiveState(back, "tool-active");
-  // Important todo- Also clear the Canvas
-  displayFlex(open_image);
-  displayNone(tool_container);
-  displayNone(canvas);
-  displayNone(img_container);
-  displayNone(filterOptions);
-  toolNo = 0;
+//*** Adjust-tool
+
+//*** Pencil-Tool
+pencil.addEventListener("click", function (e) {
+  toolNo = 3;
+  onlyViewToolContainer();
+  displayFlex(pencil_options);
+  mouseDown = false;
+
+  canvas.addEventListener("mousedown", pencilMouseDown);
+  canvas.addEventListener("mousemove", pencilMouseMove);
+  canvas.addEventListener("mouseup", pencilMouseUp);
 })
-// Download Pic
+//Line-width
+lineWidth.addEventListener("change", function (e) {
+  tool.lineWidth = lineWidth.valueAsNumber;
+})
+// Handle Click on All Color Elements
+allColorEle.forEach(colorEle => {
+  // Click on Each Color-Element
+  colorEle.addEventListener("click", function (e) {
+    removeColorActiveState();
+    let colorElement = e.currentTarget;
+    colorElement.classList.add("color-active");// Active State
+    tool.strokeStyle = colorElement.getAttribute("colorValue");//set color
+  });
+});
+
+//*** Handle Back-Btn
+back.addEventListener("click", function (e) {
+  toolNo = 0; // reset toolNo
+  document.location.reload(true); // re-load pg
+
+  // removeAllActive(allTool);
+  // setActiveState(back, "tool-active");
+  // // Important todo- Also clear the Canvas
+  // displayFlex(open_image);
+  // displayNone(tool_container);
+  // displayNone(canvas);
+  // displayNone(img_container);
+  // displayNone(filterOptions);
+
+})
+
+//*** Download Pic
 download.addEventListener("click", function (e) {
   toolNo = 4;
   let url = canvas.toDataURL();
@@ -94,9 +138,56 @@ allFilters.forEach(filter => {
 apply.addEventListener("click", function (e) {
   if (toolNo == 1) {
     applyFilterInCanvas();
-    currFilter = "";
+    currFilter = "";  // reset-filter
   }
+  onlyViewToolContainer();
 })
+// Click on-> Cancel
+cancel.addEventListener("click", function (e) {
+  if (toolNo == 1) {
+    applyDefaultFilterInUIandCanvas();
+  }
+  onlyViewToolContainer();
+})
+
+//*****************************Functions */
+
+// Colors In Pencil Formatting State
+function removeColorActiveState() {
+  allColorEle.forEach(color => {
+    color.classList.remove("color-active");
+  });
+}
+// Handle -Pencil MouseDown,MouseMove and MouseUp
+function pencilMouseDown(e) {
+  if (toolNo == 3) { // Check-Tool State
+    mouseDown = true;
+    tool.beginPath();
+    let x = e.clientX;
+    let y = e.clientY;
+    x = x - canvas.offsetLeft;
+    y = y - canvas.offsetTop;
+    tool.moveTo(x, y);
+
+  }
+}
+function pencilMouseMove(e) {
+  if (toolNo == 3) {
+    if (mouseDown) {
+      let x = e.clientX;
+      let y = e.clientY;
+      x = x - canvas.offsetLeft;
+      y = y - canvas.offsetTop;
+      tool.lineTo(x, y);
+      tool.stroke();
+    }
+  }
+}
+function pencilMouseUp(e) {
+  if (toolNo == 3) {
+    mouseDown = false;
+  }
+}
 
 // get-Filter from UI
 function getFilter(id) {
@@ -120,6 +211,20 @@ function applyFilterInCanvas() {
   tool.filter = currFilter;
   tool.drawImage(img_container, 0, 0, canvas.width, canvas.height);
   tool.filter = "none";
+}
+
+// Apply Default filter in UI and Canvas i.e., none
+function applyDefaultFilterInUIandCanvas() {
+  // Set UI
+  img_container.style.filter = "none";
+  currFilter = "";
+  // Set Canvas
+  tool.drawImage(img_container, 0, 0, canvas.width, canvas.height);
+}
+
+function onlyViewToolContainer() {
+  displayNone(filterOptions);
+  displayNone(pencil_options);
 }
 
 // Set Active-State of an Element
