@@ -209,6 +209,11 @@ body{
   cursor: pointer;  
 }
 
+/* adjust-Tools  */
+#exposure-input{
+  display: none;
+}
+
 /**************************** Pencil-Tool */
 .pencil-options{
   display: flex;
@@ -266,7 +271,7 @@ body{
 .canvas-style{
   position: fixed;
   bottom: 2rem;
-  left: calc(100vw/3);
+  left: calc(100vw/5);
   width: 655px;
   height: 400px;
   display: none;

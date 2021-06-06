@@ -27,7 +27,13 @@ let mouseDown;
 let lineWidth = document.querySelector(".line-width")
 let allColorEle = document.querySelectorAll(".color");
 let currColor = "";
-// 
+// Adjust-Tool
+let adjust=document.querySelector("#adjust");
+let adjustOptions=document.querySelector(".adjust-options");
+let allAdjustTool=document.querySelector(".adjust-tool");
+let exposure=document.querySelector("#exposure");
+let exposureInput=document.querySelector("#exposure-input");
+let adjustToolNo=0;
 // Apply and Cancel
 let apply = document.querySelector(".apply");
 let cancel = document.querySelector(".cancel");
@@ -70,6 +76,25 @@ filterTool.addEventListener("click", function (e) {
 })
 
 //*** Adjust-tool
+adjust.addEventListener("click",function(e){
+  toolNo=2;
+  onlyViewToolContainer();
+  displayFlex(adjustOptions);
+})
+// Exposure
+exposure.addEventListener("click",function(e){
+  adjustToolNo=3;
+  displayInLineBlock(exposureInput);
+})
+exposureInput.addEventListener("change", function (e) {
+  let exp = exposureInput.valueAsNumber;
+  currFilter=`brightness(${exp})`
+  img_container.style.filter = currFilter;
+  applyFilterInCanvas();
+  currFilter="";
+
+})
+
 
 //*** Pencil-Tool
 pencil.addEventListener("click", function (e) {
@@ -225,6 +250,7 @@ function applyDefaultFilterInUIandCanvas() {
 function onlyViewToolContainer() {
   displayNone(filterOptions);
   displayNone(pencil_options);
+  displayNone(adjustOptions);
 }
 
 // Set Active-State of an Element
@@ -248,5 +274,9 @@ function displayFlex(element) {
 }
 function displayBlock(element) {
   element.style.display = "block";
+  element.style.filter = "none";
+}
+function displayInLineBlock(element) {
+  element.style.display = "inline-block";
   element.style.filter = "none";
 }
