@@ -272,13 +272,15 @@ body{
   position: fixed;
   bottom: 2rem;
   left: calc(100vw/5);
+  /* left: calc(100vw/3); */
   width: 655px;
   height: 400px;
   display: none;
   /* border: 1px solid white; */
 }
 .img-container{
-  z-index: -2;
+  z-index: 2;
+  /* z-index: -2; */
   position: fixed;
   bottom: 2rem;
   left: calc(100vw/5);
